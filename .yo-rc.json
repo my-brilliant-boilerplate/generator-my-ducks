@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "AlekseyLeshko",
+      "authorEmail": "alekseyleshko@gmail.com",
+      "authorUrl": "https://github.com/AlekseyLeshko"
+    }
+  }
+}
