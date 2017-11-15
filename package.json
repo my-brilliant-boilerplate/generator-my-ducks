@@ -1,0 +1,19 @@
+{
+  "name": "generator-ducks-modular-redux",
+  "version": "0.0.1",
+  "description": "Yeoman generator for Ducks modular redux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/my-brilliant-boilerplate/generator-ducks-modular-redux.git"
+  },
+  "author": "Aleksey Leshko <alekseyleshko@gmail.com> (https://github.com/AlekseyLeshko)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/my-brilliant-boilerplate/generator-ducks-modular-redux/issues"
+  },
+  "homepage": "https://github.com/my-brilliant-boilerplate/generator-ducks-modular-redux#readme"
+}
