@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/my-brilliant-boilerplate/generator-ducks-modular-redux/issues"
   },
-  "homepage": "https://github.com/my-brilliant-boilerplate/generator-ducks-modular-redux#readme"
+  "homepage": "https://github.com/my-brilliant-boilerplate/generator-ducks-modular-redux#readme",
+  "dependencies": {
+    "yeoman-generator": "^2.0.1"
+  }
 }
