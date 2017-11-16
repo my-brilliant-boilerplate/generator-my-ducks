@@ -44,13 +44,21 @@
     "yosay": "^2.0.1"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": ["helper.js"],
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "generators/app/index.js",
+      "generators/reducer/index.js"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": ["html"]
   },
   "scripts": {
     "prepublish": "nsp check",
     "pretest": "eslint .",
     "precommit": "lint-staged",
-    "test": "jest . --watch"
+    "test": "jest"
   },
   "lint-staged": {
     "*.js": ["eslint --fix", "git add"],
