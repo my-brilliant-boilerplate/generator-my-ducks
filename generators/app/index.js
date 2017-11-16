@@ -13,7 +13,7 @@ module.exports = class extends Generator {
       {
         type: 'String',
         name: 'srcPath',
-        message: 'Name of application directory (default src)',
+        message: 'Name of application directory',
         default: 'src',
         store: true
       }
