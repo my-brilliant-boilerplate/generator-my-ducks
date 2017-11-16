@@ -10,6 +10,6 @@ module.exports = class extends Generator {
 
   writing() {
     const path = `modules/${this.arguments[0]}`;
-    this.fs.copy(this.templatePath('reducer/**'), this.destinationPath(path));
+    this.fs.copy(this.templatePath('**'), this.destinationPath(path));
   }
 };

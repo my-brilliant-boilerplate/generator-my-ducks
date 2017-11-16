@@ -8,7 +8,7 @@ describe('generator-ducks-modular-redux:reducer', () => {
 
   beforeAll(() => {
     return helpers
-      .run(path.join(__dirname, '../generators/app/reducer'))
+      .run(path.join(__dirname, '../generators/reducer'))
       .withArguments([reducer]);
   });
 
