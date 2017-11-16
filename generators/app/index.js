@@ -5,38 +5,43 @@ const yosay = require('yosay');
 
 module.exports = class extends Generator {
   prompting() {
-    // Have Yeoman greet the user.
     this.log(
-      yosay(
-        'Welcome to the stunning ' +
-          chalk.red('generator-ducks-modular-redux') +
-          ' generator!'
-      )
+      yosay('Welcome to the stunning ' + chalk.red('ducks-modular-redux') + ' generator!')
     );
 
     const prompts = [
       {
-        type: 'confirm',
-        name: 'someAnswer',
-        message: 'Would you like to enable this option?',
-        default: true
+        type: 'String',
+        name: 'srcPath',
+        message: 'Name of application directory (default src)',
+        default: 'src',
+        store: true
       }
     ];
 
     return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
       this.props = props;
     });
   }
 
   writing() {
+    this._createStore();
+    this._createRootReducer();
+
+    // This.composeWith(require.resolve('../reducer'), { arguments: args });
+  }
+
+  _createStore() {
     this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+      this.templatePath('store.js'),
+      this.destinationPath(`${this.props.srcPath}/store/index.js`)
     );
   }
 
-  install() {
-    this.installDependencies();
+  _createRootReducer() {
+    this.fs.copy(
+      this.templatePath('rootReducer.js'),
+      this.destinationPath(`${this.props.srcPath}/modules/rootReducer.js`)
+    );
   }
 };

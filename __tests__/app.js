@@ -4,13 +4,18 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
 describe('generator-ducks-modular-redux:app', () => {
+  const srcPath = 'testSrc';
+
   beforeAll(() => {
     return helpers
       .run(path.join(__dirname, '../generators/app'))
-      .withPrompts({ someAnswer: true });
+      .withPrompts({ srcPath });
   });
 
   it('creates files', () => {
-    assert.file(['dummyfile.txt']);
+    const expectedFiles = ['store/index', 'modules/rootReducer'];
+    const files = expectedFiles.map(file => `${srcPath}/${file}.js`);
+
+    assert.file(files);
   });
 });
