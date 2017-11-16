@@ -9,7 +9,8 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const path = `modules/${this.arguments[0]}`;
+    const path = `${this.config.get('srcPath')}/modules/${this.arguments[0]}`;
+    console.log(path);
     this.fs.copy(this.templatePath('**'), this.destinationPath(path));
   }
 };

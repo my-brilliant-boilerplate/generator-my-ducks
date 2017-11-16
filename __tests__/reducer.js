@@ -9,11 +9,12 @@ describe('generator-ducks-modular-redux:reducer', () => {
   beforeAll(() => {
     return helpers
       .run(path.join(__dirname, '../generators/reducer'))
+      .withLocalConfig({ srcPath: 'src' })
       .withArguments([reducer]);
   });
 
   it('creates files', () => {
-    const basePath = `modules/${reducer}`;
+    const basePath = `src/modules/${reducer}`;
     const expectedFiles = ['actions', 'index', 'constants', 'selectors'];
     const files = expectedFiles.map(file => {
       return `${basePath}/${file}.js`;
