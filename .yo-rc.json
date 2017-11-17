@@ -1,9 +1,9 @@
 {
   "generator-node": {
     "promptValues": {
-      "authorName": "AlekseyLeshko",
+      "authorName": "my-brilliant-boilerplate",
       "authorEmail": "alekseyleshko@gmail.com",
-      "authorUrl": "https://github.com/AlekseyLeshko"
+      "authorUrl": "https://github.com/my-brilliant-boilerplate"
     }
   }
 }
