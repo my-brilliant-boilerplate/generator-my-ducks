@@ -3,7 +3,7 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
-describe('generator-ducks-modular-redux:app', () => {
+describe('generator-my-ducks:app', () => {
   const srcPath = 'testSrc';
 
   beforeAll(() => {

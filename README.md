@@ -1,19 +1,19 @@
-# generator-ducks-modular-redux [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
-> Yeoman generator for Ducks modular redux
+# generator-my-ducks [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+> Yeoman generator for My Ducks
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-ducks-modular-redux using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-my-ducks using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo
-npm install -g generator-ducks-modular-redux
+npm install -g generator-my-ducks
 ```
 
 Then generate your new project:
 
 ```bash
-yo ducks-modular-redux
+yo generator-my-ducks
 ```
 
 ## Getting To Know Yeoman
@@ -28,11 +28,11 @@ yo ducks-modular-redux
 MIT © [AlekseyLeshko](https://github.com/AlekseyLeshko)
 
 
-[npm-image]: https://badge.fury.io/js/generator-ducks-modular-redux.svg
-[npm-url]: https://npmjs.org/package/generator-ducks-modular-redux
-[travis-image]: https://travis-ci.org/https://github.com/my-brilliant-boilerplate/generator-ducks-modular-redux.svg?branch=master
-[travis-url]: https://travis-ci.org/https://github.com/my-brilliant-boilerplate/generator-ducks-modular-redux
-[daviddm-image]: https://david-dm.org/https://github.com/my-brilliant-boilerplate/generator-ducks-modular-redux.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/https://github.com/my-brilliant-boilerplate/generator-ducks-modular-redux
-[coveralls-image]: https://coveralls.io/repos/https://github.com/my-brilliant-boilerplate/generator-ducks-modular-redux/badge.svg
-[coveralls-url]: https://coveralls.io/r/https://github.com/my-brilliant-boilerplate/generator-ducks-modular-redux
+[npm-image]: https://badge.fury.io/js/generator-my-ducks.svg
+[npm-url]: https://npmjs.org/package/generator-my-ducks
+[travis-image]: https://travis-ci.org/my-brilliant-boilerplate/generator-my-ducks.svg?branch=master
+[travis-url]: https://travis-ci.org/my-brilliant-boilerplate/generator-my-ducks
+[daviddm-image]: https://david-dm.org/my-brilliant-boilerplate/generator-my-ducks.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/my-brilliant-boilerplate/generator-my-ducks
+[coveralls-image]: https://coveralls.io/repos/my-brilliant-boilerplate/generator-my-ducks/badge.svg
+[coveralls-url]: https://coveralls.io/r/https://github.com/my-brilliant-boilerplate/generator-my-ducks

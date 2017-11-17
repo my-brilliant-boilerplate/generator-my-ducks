@@ -4,7 +4,7 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const reducerHelper = require('./helper.js');
 
-describe('generator-ducks-modular-redux:reducer', () => {
+describe('generator-my-ducks:reducer', () => {
   const reducer = 'servers';
 
   describe('with config', () => {

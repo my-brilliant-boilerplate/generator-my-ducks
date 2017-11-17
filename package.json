@@ -1,9 +1,8 @@
 {
-  "name": "generator-ducks-modular-redux",
+  "name": "generator-my-ducks",
   "version": "0.0.0",
-  "description": "Yeoman generator for Ducks modular redux",
-  "homepage":
-    "https://github.com/my-brilliant-boilerplate/generator-ducks-modular-redux",
+  "description": "Yeoman generator for My Ducks",
+  "homepage": "https://github.com/my-brilliant-boilerplate/generator-my-ducks",
   "author": {
     "name": "AlekseyLeshko",
     "email": "alekseyleshko@gmail.com",
@@ -18,6 +17,7 @@
     "init",
     "create",
     "boilerplate",
+    "my-ducks",
     "ducks",
     "modules",
     "redux",
@@ -82,6 +82,6 @@
     "plugins": ["prettier"]
   },
   "repository":
-    "git@github.com:my-brilliant-boilerplate/generator-ducks-modular-redux.git",
+    "git@github.com:my-brilliant-boilerplate/generator-my-ducks.git",
   "license": "MIT"
 }
