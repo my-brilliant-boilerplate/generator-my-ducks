@@ -5,9 +5,7 @@ const yosay = require('yosay');
 
 module.exports = class extends Generator {
   prompting() {
-    this.log(
-      yosay('Welcome to the stunning ' + chalk.red('ducks-modular-redux') + ' generator!')
-    );
+    this.log(yosay('Welcome to the stunning ' + chalk.red('my-ducks') + ' generator!'));
 
     const prompts = [
       {
