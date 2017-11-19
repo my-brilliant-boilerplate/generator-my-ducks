@@ -1,9 +1,14 @@
 import { combineReducers } from 'redux';
-<% reducers.map((reducer) => { %>
-  import <%= reducer -%> from './<%= reducer %>';
-<% }); %>
+<%_ reducers.map((reducer) => { _%>
+import <%= reducer -%> from './<%= reducer %>';
+<%_ }); _%>
+// import reducer from './reducer';
+
 const appReducer = combineReducers({
-<% reducers.map((reducer, index) => { %>  <%= reducer %>,<% }); %>
+<%_ reducers.map((reducer) => { _%>
+  <%= reducer + ',' %>
+<%_ }); _%>
+  // reducer,
 });
 
 export default appReducer;

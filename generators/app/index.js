@@ -37,9 +37,14 @@ module.exports = class extends Generator {
   }
 
   _createRootReducer() {
-    this.fs.copy(
+    const tpl = {
+      reducers: []
+    };
+
+    this.fs.copyTpl(
       this.templatePath('rootReducer.js'),
-      this.destinationPath(`${this.props.srcPath}/modules/rootReducer.js`)
+      this.destinationPath(`${this.props.srcPath}/modules/rootReducer.js`),
+      tpl
     );
   }
 };
