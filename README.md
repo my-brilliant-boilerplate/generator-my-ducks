@@ -35,4 +35,4 @@ MIT © [AlekseyLeshko](https://github.com/AlekseyLeshko)
 [daviddm-image]: https://david-dm.org/my-brilliant-boilerplate/generator-my-ducks.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/my-brilliant-boilerplate/generator-my-ducks
 [coveralls-image]: https://coveralls.io/repos/my-brilliant-boilerplate/generator-my-ducks/badge.svg
-[coveralls-url]: https://coveralls.io/r/https://github.com/my-brilliant-boilerplate/generator-my-ducks
+[coveralls-url]: https://coveralls.io/r/my-brilliant-boilerplate/generator-my-ducks
