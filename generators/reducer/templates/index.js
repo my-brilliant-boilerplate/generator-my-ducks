@@ -1,11 +1,14 @@
 import * as constants from './constants';
 
-const initState = [];
+const initState = {};
 
 export default (state = initState, action) => {
   switch (action.type) {
-    case constants.TEST:
-      return state;
+    case constants.<%= name %>_ADD:
+      return {
+        ...state,
+        action.obj
+      }
 
   default:
       return state;

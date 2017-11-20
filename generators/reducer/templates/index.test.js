@@ -2,16 +2,17 @@ import store from '../../store';
 import * as actions from './actions.js';
 import * as selectors from './selectors.js';
 
-describe('modules:test', () => {
+describe('modules:<%= name.toLowerCase() %>', () => {
   it('should return store', () => {
+    const expectedName = 'test-name';
     const obj = {
-      name: 'test-name',
+      name: expectedName
     };
 
-    expect(selectors.getStore(store.getState()).length).toEqual(0);
+    expect(Object.keys(selectors.getState(store.getState()))).toEqual(0);
 
-    store.dispatch(actions.testAction(obj));
+    store.dispatch(actions.add<%= name.charAt(0).toUpperCase() + name.toLowerCase().slice(1) %>(obj));
 
-    expect(selectors.getStore(store.getState()).length).toEqual(0);
+    expect(selectors.getState(store.getState()).name).toEqual(expectedName);
   });
 });

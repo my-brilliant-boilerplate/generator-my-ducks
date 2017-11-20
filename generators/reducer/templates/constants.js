@@ -1,2 +1,2 @@
-export const TEST = 'TEST';
+export const <%= name %>_ADD = <%= name %>_ADD;
 

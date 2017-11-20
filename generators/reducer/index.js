@@ -20,7 +20,12 @@ module.exports = class extends Generator {
       srcPath = this.options.srcPath;
     }
 
+    const reducerName = this.arguments[0];
+    const tpl = {
+      name: reducerName.toUpperCase()
+    };
+
     const path = `${srcPath}/modules/${this.arguments[0]}`;
-    this.fs.copy(this.templatePath('**'), this.destinationPath(path));
+    this.fs.copyTpl(this.templatePath('**'), this.destinationPath(path), tpl);
   }
 };
