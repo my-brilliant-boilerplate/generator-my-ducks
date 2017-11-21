@@ -1,6 +1,8 @@
 # generator-my-ducks [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > Yeoman generator for My Ducks
 
+![screenshot](docs/images/screenshot.png)
+
 ## Installation
 
 First, install [Yeoman](http://yeoman.io) and generator-my-ducks using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
@@ -13,8 +15,33 @@ npm install -g generator-my-ducks
 Then generate your new project:
 
 ```bash
-yo generator-my-ducks
+yo my-ducks
 ```
+
+#### API
+##### Reducer
+![screenshot](docs/images/screenshot-reducer.png)
+```bash
+yo my-ducks:reducer brokers
+yo my-ducks:reducer brokers --srcPath app
+```
+
+Arguments:
+- reducer name
+  - decription: reducer name
+  - type: string
+
+Options:
+- srcPath
+  - decription: Name of application directory.
+  - type: string
+  - value
+    - from cli
+    - from config(.yo-rc.json)
+    - default value(scr)
+
+
+
 
 ## Getting To Know Yeoman
 
