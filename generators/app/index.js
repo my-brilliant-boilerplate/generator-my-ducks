@@ -14,6 +14,11 @@ module.exports = class extends Generator {
         message: 'Name of application directory',
         default: 'src',
         store: true
+      },
+      {
+        name: 'reducers',
+        message: 'Reducers names (comma to split)',
+        filter: this._filterForReducers
       }
     ];
 
@@ -22,11 +27,14 @@ module.exports = class extends Generator {
     });
   }
 
+  _filterForReducers(words) {
+    return words.split(/\s*,\s*/g);
+  }
+
   writing() {
     this._createStore();
     this._createRootReducer();
-
-    // This.composeWith(require.resolve('../reducer'), { arguments: args });
+    this._createReducers();
   }
 
   _createStore() {
@@ -38,7 +46,7 @@ module.exports = class extends Generator {
 
   _createRootReducer() {
     const tpl = {
-      reducers: []
+      reducers: this.props.reducers
     };
 
     this.fs.copyTpl(
@@ -46,5 +54,14 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.props.srcPath}/modules/rootReducer.js`),
       tpl
     );
+  }
+
+  _createReducers() {
+    this.props.reducers.map(reducer => {
+      return this.composeWith(require.resolve('../reducer'), {
+        arguments: [reducer],
+        srcPath: this.props.srcPath
+      });
+    });
   }
 };

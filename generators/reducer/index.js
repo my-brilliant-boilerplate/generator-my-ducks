@@ -20,12 +20,20 @@ module.exports = class extends Generator {
       srcPath = this.options.srcPath;
     }
 
+    const path = `${srcPath}/modules/${this.arguments[0]}`;
+    const expectedFiles = ['actions', 'index', 'index.test', 'constants', 'selectors'];
+
     const reducerName = this.arguments[0];
     const tpl = {
       name: reducerName.toUpperCase()
     };
 
-    const path = `${srcPath}/modules/${this.arguments[0]}`;
-    this.fs.copyTpl(this.templatePath('**'), this.destinationPath(path), tpl);
+    expectedFiles.map(file => {
+      return this.fs.copyTpl(
+        this.templatePath(`${file}.js`),
+        this.destinationPath(`${path}/${file}.js`),
+        tpl
+      );
+    });
   }
 };
