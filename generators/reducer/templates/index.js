@@ -7,11 +7,11 @@ export default (state = initState, action) => {
     case constants.<%= name %>_ADD:
       return {
         ...state,
-        action.obj
-      }
+        ...action.obj
+      };
 
-  default:
+    default:
       return state;
-  };
+  }
 };
 

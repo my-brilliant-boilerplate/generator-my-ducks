@@ -1,2 +1,2 @@
-export const getState = (state) => state;
+export const getState = (state) => state.<%= name.toLowerCase() %>;
 
