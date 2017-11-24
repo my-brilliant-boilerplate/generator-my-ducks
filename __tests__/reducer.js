@@ -31,14 +31,18 @@ describe('generator-my-ducks:reducer', () => {
       const srcPath = 'app';
 
       reducerHelper.run({ srcPath }, [reducer], () => {
-        assert.file(`${srcPath}/modules/servers/actions.js`);
+        const expectedFiles = [`${srcPath}/modules/servers/actions.js`, '.yo-rc.json'];
+        assert.file(expectedFiles);
+        assert.fileContent(expectedFiles[1], srcPath);
         done();
       });
     });
 
     it('with default srcPath in option', done => {
       reducerHelper.run({}, [reducer], () => {
-        assert.file(`src/modules/servers/actions.js`);
+        const expectedFiles = [`src/modules/servers/actions.js`, '.yo-rc.json'];
+        assert.file(expectedFiles);
+        assert.fileContent(expectedFiles[1], 'src');
         done();
       });
     });

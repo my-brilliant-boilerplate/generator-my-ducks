@@ -18,6 +18,7 @@ module.exports = class extends Generator {
     let srcPath = this.config.get('srcPath');
     if (!srcPath) {
       srcPath = this.options.srcPath;
+      this.config.set('srcPath', srcPath);
     }
 
     const path = `${srcPath}/modules/${this.arguments[0]}`;
