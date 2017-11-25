@@ -18,6 +18,7 @@ module.exports = class extends Generator {
       {
         name: 'reducers',
         message: 'Reducers names (comma to split)',
+        default: [],
         filter: this._filterForReducers
       }
     ];
