@@ -18,7 +18,6 @@ module.exports = class extends Generator {
       {
         name: 'reducers',
         message: 'Reducers names (comma to split)',
-        default: [],
         filter: this._filterForReducers
       }
     ];
@@ -29,6 +28,10 @@ module.exports = class extends Generator {
   }
 
   _filterForReducers(words) {
+    if (words.length === 0) {
+      return [];
+    }
+
     return words.split(/\s*,\s*/g);
   }
 

@@ -1,42 +1,79 @@
 'use strict';
-const path = require('path');
 const assert = require('yeoman-assert');
+const generators = require('./generators-helper.js');
+const path = require('path');
 const helpers = require('yeoman-test');
 
+const getFileForReducer = (srcPath, reducers, reducerFiles) => {
+  return reducers.map(reducer => {
+    return reducerFiles.map(file => {
+      return `${srcPath}/${reducer}/${file}.js`;
+    });
+  });
+};
+
 describe('generator-my-ducks:app', () => {
-  let generator;
   const srcPath = 'testSrc';
   const reducers = ['servers', 'auth'];
 
-  beforeAll(() => {
-    generator = helpers
-      .run(path.join(__dirname, '../generators/app'))
-      .withPrompts({ srcPath, reducers });
-
-    return generator;
-  });
-
-  it('creates files', () => {
+  describe('should creates', () => {
     const expectedFiles = ['store/index', 'modules/rootReducer'];
     const reducerFiles = ['actions', 'index', 'index.test', 'constants', 'selectors'];
     const files = expectedFiles.map(file => `${srcPath}/${file}.js`);
-    files.concat(
-      reducers.map(reducer => {
-        return reducerFiles.map(file => {
-          return `${srcPath}/${reducer}/${file}.js`;
-        });
-      })
-    );
 
-    assert.file(files);
+    it('all files', done => {
+      files.concat(getFileForReducer(srcPath, reducers, reducerFiles));
+      generators.app({
+        prompts: { srcPath, reducers },
+        done: () => {
+          assert.file(files);
+          done();
+        }
+      });
+    });
+
+    it('files without reducers', done => {
+      const filesNotExists = getFileForReducer(srcPath, reducers, reducerFiles);
+
+      generators.app({
+        prompts: { srcPath, reducers: [] },
+        done: () => {
+          assert.file(files);
+          assert.noFile(filesNotExists);
+
+          done();
+        }
+      });
+    });
   });
 
-  it('should return reducers names', () => {
-    const reducersNames = 'servers, auth,devices';
-    const expected = ['servers', 'auth', 'devices'];
+  describe('filter for reducers prompt', () => {
+    let generator;
 
-    const reducers = generator.generator._filterForReducers(reducersNames);
+    beforeAll(() => {
+      generator = helpers
+        .run(path.join(__dirname, '../generators/app'))
+        .withPrompts({ srcPath, reducers });
 
-    expect(reducers).toEqual(expected);
+      return generator;
+    });
+
+    it('should return reducers names', () => {
+      const reducersNames = 'servers, auth,devices';
+      const expected = ['servers', 'auth', 'devices'];
+
+      const reducers = generator.generator._filterForReducers(reducersNames);
+
+      expect(reducers).toEqual(expected);
+    });
+
+    it('should return default value', () => {
+      const reducersNames = '';
+      const expected = [];
+
+      const reducers = generator.generator._filterForReducers(reducersNames);
+
+      expect(reducers).toEqual(expected);
+    });
   });
 });

@@ -45,7 +45,7 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "testPathIgnorePatterns": ["helper.js", "generators"],
+    "testPathIgnorePatterns": ["generators-helper.js", "generators"],
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
       "generators/app/index.js",
