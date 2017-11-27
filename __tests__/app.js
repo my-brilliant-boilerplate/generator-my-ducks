@@ -18,7 +18,14 @@ describe('generator-my-ducks:app', () => {
 
   describe('should creates', () => {
     const expectedFiles = ['store/index', 'modules/rootReducer'];
-    const reducerFiles = ['actions', 'index', 'index.test', 'constants', 'selectors'];
+    const reducerFiles = [
+      'actions',
+      'index',
+      'index.test',
+      'constants',
+      'selectors',
+      'selectors.test'
+    ];
     const files = expectedFiles.map(file => `${srcPath}/${file}.js`);
 
     it('all files', done => {

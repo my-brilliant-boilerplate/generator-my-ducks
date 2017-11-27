@@ -17,7 +17,14 @@ describe('generator-my-ducks:reducer', () => {
 
     it('creates files', () => {
       const basePath = `src/modules/${reducer}`;
-      const expectedFiles = ['actions', 'index', 'index.test', 'constants', 'selectors'];
+      const expectedFiles = [
+        'actions',
+        'index',
+        'index.test',
+        'constants',
+        'selectors',
+        'selectors.test'
+      ];
       const files = expectedFiles.map(file => {
         return `${basePath}/${file}.js`;
       });

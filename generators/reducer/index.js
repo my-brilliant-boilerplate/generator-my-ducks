@@ -22,7 +22,14 @@ module.exports = class extends Generator {
     }
 
     const path = `${srcPath}/modules/${this.arguments[0]}`;
-    const expectedFiles = ['actions', 'index', 'index.test', 'constants', 'selectors'];
+    const expectedFiles = [
+      'actions',
+      'index',
+      'index.test',
+      'constants',
+      'selectors',
+      'selectors.test'
+    ];
 
     const reducerName = this.arguments[0];
     const tpl = {
