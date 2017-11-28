@@ -1,21 +1,13 @@
 'use strict';
-const path = require('path');
 const assert = require('yeoman-assert');
-const helpers = require('yeoman-test');
 const generators = require('./generators-helper.js');
 
 describe('generator-my-ducks:reducer', () => {
   const reducer = 'servers';
 
   describe('with config', () => {
-    beforeAll(() => {
-      return helpers
-        .run(path.join(__dirname, '../generators/reducer'))
-        .withLocalConfig({ srcPath: 'src' })
-        .withArguments([reducer]);
-    });
-
-    it('creates files', () => {
+    it('creates files', done => {
+      const srcPath = 'src';
       const basePath = `src/modules/${reducer}`;
       const expectedFiles = [
         'actions',
@@ -29,7 +21,43 @@ describe('generator-my-ducks:reducer', () => {
         return `${basePath}/${file}.js`;
       });
 
-      assert.file(files);
+      generators.reducer({
+        options: { srcPath },
+        args: [reducer],
+        done: () => {
+          assert.file(files);
+          assert.fileContent(`${basePath}/index.js`, 'handleActions');
+
+          done();
+        }
+      });
+    });
+
+    it('creates reducer without redux-actions module', done => {
+      const srcPath = 'src';
+      const basePath = `src/modules/${reducer}`;
+      const expectedFiles = [
+        'actions',
+        'index',
+        'index.test',
+        'constants',
+        'selectors',
+        'selectors.test'
+      ];
+      const files = expectedFiles.map(file => {
+        return `${basePath}/${file}.js`;
+      });
+
+      generators.reducer({
+        options: { srcPath, withReduxAction: false },
+        args: [reducer],
+        done: () => {
+          assert.file(files);
+          assert.noFileContent(`${basePath}/index.js`, 'handleActions');
+
+          done();
+        }
+      });
     });
   });
 
