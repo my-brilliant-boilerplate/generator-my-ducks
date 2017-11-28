@@ -7,7 +7,7 @@ export default (state = initState, action) => {
     case constants.<%= name %>_ADD:
       return {
         ...state,
-        ...action.obj
+        ...action.data,
       };
 
     default:
