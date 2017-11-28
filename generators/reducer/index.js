@@ -1,5 +1,6 @@
 'use strict';
 const Generator = require('yeoman-generator');
+const path = require('path');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -12,6 +13,12 @@ module.exports = class extends Generator {
       type: String,
       default: 'src'
     });
+    this.option('withReduxAction', {
+      desc: 'Use redux-actions module in reducer',
+      alias: 'ra',
+      type: Boolean,
+      default: true
+    });
   }
 
   writing() {
@@ -21,27 +28,37 @@ module.exports = class extends Generator {
       this.config.set('srcPath', srcPath);
     }
 
-    const path = `${srcPath}/modules/${this.arguments[0]}`;
-    const expectedFiles = [
-      'actions',
-      'index',
-      'index.test',
-      'constants',
-      'selectors',
-      'selectors.test'
-    ];
+    const basePath = `${srcPath}/modules/${this.arguments[0]}`;
 
     const reducerName = this.arguments[0];
     const tpl = {
       name: reducerName.toUpperCase()
     };
 
-    expectedFiles.map(file => {
+    const files = this._getFileList();
+    files.map(file => {
+      const filename = path.basename(`${file}.js`);
       return this.fs.copyTpl(
         this.templatePath(`${file}.js`),
-        this.destinationPath(`${path}/${file}.js`),
+        this.destinationPath(`${basePath}/${filename}`),
         tpl
       );
     });
+  }
+
+  _getFileList() {
+    const reducerFileName = this.options.withReduxAction
+      ? 'redux-actions/index'
+      : 'index';
+    const files = [
+      'actions',
+      reducerFileName,
+      'index.test',
+      'constants',
+      'selectors',
+      'selectors.test'
+    ];
+
+    return files;
   }
 };
