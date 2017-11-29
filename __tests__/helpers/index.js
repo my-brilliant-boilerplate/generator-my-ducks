@@ -12,9 +12,9 @@ const run = ({ generatorPath, options = {}, args = [], prompts = {}, done }) => 
 
 module.exports = {
   app: ({ options = {}, args = [], prompts = {}, done }) => {
-    run({ generatorPath: '../generators/app', options, args, prompts, done });
+    run({ generatorPath: '../../generators/app', options, args, prompts, done });
   },
   reducer: ({ options = {}, args = [], prompts = {}, done }) => {
-    run({ generatorPath: '../generators/reducer', options, args, prompts, done });
+    run({ generatorPath: '../../generators/reducer', options, args, prompts, done });
   }
 };

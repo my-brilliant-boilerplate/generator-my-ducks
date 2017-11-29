@@ -1,9 +1,9 @@
 'use strict';
 const assert = require('yeoman-assert');
-const generators = require('./generators-helper.js');
 const path = require('path');
 const helpers = require('yeoman-test');
 const utils = require('./helpers/utils.js');
+const helper = require('./helpers/index.js');
 
 describe('generator-my-ducks:app', () => {
   const srcPath = 'testSrc';
@@ -23,7 +23,7 @@ describe('generator-my-ducks:app', () => {
 
     it('all files', done => {
       files.concat(utils.getFileForReducer(srcPath, reducers, reducerFiles));
-      generators.app({
+      helper.app({
         prompts: { srcPath, reducers },
         done: () => {
           assert.file(files);
@@ -35,7 +35,7 @@ describe('generator-my-ducks:app', () => {
     it('files without reducers', done => {
       const filesNotExists = utils.getFileForReducer(srcPath, reducers, reducerFiles);
 
-      generators.app({
+      helper.app({
         prompts: { srcPath, reducers: [] },
         done: () => {
           assert.file(files);

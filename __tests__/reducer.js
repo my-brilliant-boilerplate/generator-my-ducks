@@ -1,6 +1,6 @@
 'use strict';
 const assert = require('yeoman-assert');
-const generators = require('./generators-helper.js');
+const helper = require('./helpers/index.js');
 
 describe('generator-my-ducks:reducer', () => {
   const reducer = 'servers';
@@ -21,7 +21,7 @@ describe('generator-my-ducks:reducer', () => {
         return `${basePath}/${file}.js`;
       });
 
-      generators.reducer({
+      helper.reducer({
         options: { srcPath },
         args: [reducer],
         done: () => {
@@ -48,7 +48,7 @@ describe('generator-my-ducks:reducer', () => {
         return `${basePath}/${file}.js`;
       });
 
-      generators.reducer({
+      helper.reducer({
         options: { srcPath, withReduxAction: false },
         args: [reducer],
         done: () => {
@@ -66,7 +66,7 @@ describe('generator-my-ducks:reducer', () => {
       const srcPath = 'app';
       const expectedFiles = [`${srcPath}/modules/servers/actions.js`, '.yo-rc.json'];
 
-      generators.reducer({
+      helper.reducer({
         options: { srcPath },
         args: [reducer],
         done: () => {
@@ -81,7 +81,7 @@ describe('generator-my-ducks:reducer', () => {
     it('with default srcPath in option', done => {
       const expectedFiles = [`src/modules/servers/actions.js`, '.yo-rc.json'];
 
-      generators.reducer({
+      helper.reducer({
         args: [reducer],
         done: () => {
           assert.file(expectedFiles);
