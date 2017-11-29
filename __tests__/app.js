@@ -3,14 +3,7 @@ const assert = require('yeoman-assert');
 const generators = require('./generators-helper.js');
 const path = require('path');
 const helpers = require('yeoman-test');
-
-const getFileForReducer = (srcPath, reducers, reducerFiles) => {
-  return reducers.map(reducer => {
-    return reducerFiles.map(file => {
-      return `${srcPath}/${reducer}/${file}.js`;
-    });
-  });
-};
+const utils = require('./helpers/utils.js');
 
 describe('generator-my-ducks:app', () => {
   const srcPath = 'testSrc';
@@ -29,7 +22,7 @@ describe('generator-my-ducks:app', () => {
     const files = expectedFiles.map(file => `${srcPath}/${file}.js`);
 
     it('all files', done => {
-      files.concat(getFileForReducer(srcPath, reducers, reducerFiles));
+      files.concat(utils.getFileForReducer(srcPath, reducers, reducerFiles));
       generators.app({
         prompts: { srcPath, reducers },
         done: () => {
@@ -40,7 +33,7 @@ describe('generator-my-ducks:app', () => {
     });
 
     it('files without reducers', done => {
-      const filesNotExists = getFileForReducer(srcPath, reducers, reducerFiles);
+      const filesNotExists = utils.getFileForReducer(srcPath, reducers, reducerFiles);
 
       generators.app({
         prompts: { srcPath, reducers: [] },
