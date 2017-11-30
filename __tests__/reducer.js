@@ -2,25 +2,24 @@
 const assert = require('yeoman-assert');
 const helper = require('./helpers/index.js');
 
-describe('generator-my-ducks:reducer', () => {
-  const reducer = 'servers';
+const reducer = 'servers';
+let expectedFiles = [
+  'actions',
+  'index',
+  'index.test',
+  'constants',
+  'selectors',
+  'selectors.test'
+];
+let srcPath = 'src';
+const basePath = `${srcPath}/modules/${reducer}`;
+const files = expectedFiles.map(file => {
+  return `${basePath}/${file}.js`;
+});
 
+describe('generator-my-ducks:reducer', () => {
   describe('with config', () => {
     it('creates files', done => {
-      const srcPath = 'src';
-      const basePath = `src/modules/${reducer}`;
-      const expectedFiles = [
-        'actions',
-        'index',
-        'index.test',
-        'constants',
-        'selectors',
-        'selectors.test'
-      ];
-      const files = expectedFiles.map(file => {
-        return `${basePath}/${file}.js`;
-      });
-
       helper.reducer({
         options: { srcPath },
         args: [reducer],
@@ -34,20 +33,6 @@ describe('generator-my-ducks:reducer', () => {
     });
 
     it('creates reducer without redux-actions module', done => {
-      const srcPath = 'src';
-      const basePath = `src/modules/${reducer}`;
-      const expectedFiles = [
-        'actions',
-        'index',
-        'index.test',
-        'constants',
-        'selectors',
-        'selectors.test'
-      ];
-      const files = expectedFiles.map(file => {
-        return `${basePath}/${file}.js`;
-      });
-
       helper.reducer({
         options: { srcPath, withReduxAction: false },
         args: [reducer],
@@ -63,8 +48,8 @@ describe('generator-my-ducks:reducer', () => {
 
   describe('without config', () => {
     it('with srcPath in option', done => {
-      const srcPath = 'app';
-      const expectedFiles = [`${srcPath}/modules/servers/actions.js`, '.yo-rc.json'];
+      srcPath = 'app';
+      expectedFiles = [`${srcPath}/modules/servers/actions.js`, '.yo-rc.json'];
 
       helper.reducer({
         options: { srcPath },
@@ -79,7 +64,7 @@ describe('generator-my-ducks:reducer', () => {
     });
 
     it('with default srcPath in option', done => {
-      const expectedFiles = [`src/modules/servers/actions.js`, '.yo-rc.json'];
+      expectedFiles = [`src/modules/servers/actions.js`, '.yo-rc.json'];
 
       helper.reducer({
         args: [reducer],
