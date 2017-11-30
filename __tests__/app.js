@@ -49,6 +49,8 @@ describe('generator-my-ducks:app', () => {
 
   describe('filter for reducers prompt', () => {
     let generator;
+    let reducersNames;
+    let expected;
 
     beforeAll(() => {
       generator = helpers
@@ -58,22 +60,20 @@ describe('generator-my-ducks:app', () => {
       return generator;
     });
 
-    it('should return reducers names', () => {
-      const reducersNames = 'servers, auth,devices';
-      const expected = ['servers', 'auth', 'devices'];
-
+    afterAll(() => {
       const reducers = generator.generator._filterForReducers(reducersNames);
 
       expect(reducers).toEqual(expected);
     });
 
+    it('should return reducers names', () => {
+      reducersNames = 'servers, auth,devices';
+      expected = ['servers', 'auth', 'devices'];
+    });
+
     it('should return default value', () => {
-      const reducersNames = '';
-      const expected = [];
-
-      const reducers = generator.generator._filterForReducers(reducersNames);
-
-      expect(reducers).toEqual(expected);
+      reducersNames = '';
+      expected = [];
     });
   });
 });
