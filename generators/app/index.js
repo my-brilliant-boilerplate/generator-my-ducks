@@ -9,16 +9,16 @@ module.exports = class extends Generator {
 
     const prompts = [
       {
-        type: 'String',
+        type: String,
         name: 'srcPath',
         message: 'Name of application directory',
         default: 'src',
         store: true
       },
       {
+        type: String,
         name: 'reducers',
-        message: 'Reducers names (comma to split)',
-        filter: this._filterForReducers
+        message: 'Reducers names (comma to split)'
       }
     ];
 
@@ -27,18 +27,20 @@ module.exports = class extends Generator {
     });
   }
 
-  _filterForReducers(words) {
-    if (words.length === 0) {
-      return [];
-    }
-
-    return words.split(/\s*,\s*/g);
-  }
-
   writing() {
+    this._parseReducers();
     this._createStore();
     this._createRootReducer();
     this._createReducers();
+  }
+
+  _parseReducers() {
+    let reducerList = [];
+    if (this.props.reducers) {
+      reducerList = this.props.reducers.split(/\s*,\s*/g);
+    }
+
+    this.props.reducers = reducerList;
   }
 
   _createStore() {
