@@ -1,4 +1,4 @@
-# generator-my-ducks [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+# generator-my-ducks [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url] [![BCH compliance][bettercodehub-image]][bettercodehub-url]
 > Yeoman generator for My Ducks
 
 ![screenshot](docs/images/screenshot.png)
@@ -63,3 +63,5 @@ MIT © [AlekseyLeshko](https://github.com/AlekseyLeshko)
 [daviddm-url]: https://david-dm.org/my-brilliant-boilerplate/generator-my-ducks
 [coveralls-image]: https://coveralls.io/repos/my-brilliant-boilerplate/generator-my-ducks/badge.svg
 [coveralls-url]: https://coveralls.io/r/my-brilliant-boilerplate/generator-my-ducks
+[bettercodehub-image]: https://bettercodehub.com/edge/badge/my-brilliant-boilerplate/generator-my-ducks?branch=master
+[bettercodehub-url]: https://bettercodehub.com/
