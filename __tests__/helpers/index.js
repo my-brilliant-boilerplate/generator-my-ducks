@@ -10,11 +10,13 @@ const run = ({ generatorPath, options = {}, args = [], prompts = {}, done }) => 
     .on('end', done);
 };
 
+const wrapper = generatorPath => {
+  return ({ options = {}, args = [], prompts = {}, done }) => {
+    run({ generatorPath, options, args, prompts, done });
+  };
+};
+
 module.exports = {
-  app: ({ options = {}, args = [], prompts = {}, done }) => {
-    run({ generatorPath: '../../generators/app', options, args, prompts, done });
-  },
-  reducer: ({ options = {}, args = [], prompts = {}, done }) => {
-    run({ generatorPath: '../../generators/reducer', options, args, prompts, done });
-  }
+  app: wrapper('../../generators/app'),
+  reducer: wrapper('../../generators/reducer')
 };
