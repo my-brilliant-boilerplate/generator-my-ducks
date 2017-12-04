@@ -1,4 +1,4 @@
-# generator-my-ducks [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url] [![BCH compliance][bettercodehub-image]][bettercodehub-url]
+# generator-my-ducks [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url] [![BCH compliance][bettercodehub-image]][bettercodehub-url] [![Maintainability][codeclimate-maintainability-image]][codeclimate-maintainability-url]
 > Yeoman generator for My Ducks
 
 ![screenshot](docs/images/screenshot.png)
@@ -65,3 +65,5 @@ MIT © [AlekseyLeshko](https://github.com/AlekseyLeshko)
 [coveralls-url]: https://coveralls.io/r/my-brilliant-boilerplate/generator-my-ducks
 [bettercodehub-image]: https://bettercodehub.com/edge/badge/my-brilliant-boilerplate/generator-my-ducks?branch=master
 [bettercodehub-url]: https://bettercodehub.com/
+[codeclimate-maintainability-image]: https://api.codeclimate.com/v1/badges/2eda01a3309277ed0161/maintainability
+[codeclimate-maintainability-url]: https://codeclimate.com/github/my-brilliant-boilerplate/generator-my-ducks/maintainability
