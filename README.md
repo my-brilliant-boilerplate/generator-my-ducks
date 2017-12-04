@@ -1,4 +1,5 @@
-# generator-my-ducks [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url] [![BCH compliance][bettercodehub-image]][bettercodehub-url] [![Maintainability][codeclimate-maintainability-image]][codeclimate-maintainability-url]
+# generator-my-ducks [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![devDependencies Status][daviddm-dev-image]][daviddm-dev-url] [![Coverage percentage][coveralls-image]][coveralls-url] [![BCH compliance][bettercodehub-image]][bettercodehub-url] [![Maintainability][codeclimate-maintainability-image]][codeclimate-maintainability-url] [![Test Coverage][codeclimate-coverage-image]][codeclimate-coverage-url]
+
 > Yeoman generator for My Ducks
 
 ![screenshot](docs/images/screenshot.png)
@@ -61,9 +62,13 @@ MIT © [AlekseyLeshko](https://github.com/AlekseyLeshko)
 [travis-url]: https://travis-ci.org/my-brilliant-boilerplate/generator-my-ducks
 [daviddm-image]: https://david-dm.org/my-brilliant-boilerplate/generator-my-ducks.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/my-brilliant-boilerplate/generator-my-ducks
+[daviddm-dev-image]: https://david-dm.org/my-brilliant-boilerplate/generator-my-ducks/dev-status.svg
+[daviddm-dev-url]: https://david-dm.org/my-brilliant-boilerplate/generator-my-ducks?type=dev
 [coveralls-image]: https://coveralls.io/repos/my-brilliant-boilerplate/generator-my-ducks/badge.svg
 [coveralls-url]: https://coveralls.io/r/my-brilliant-boilerplate/generator-my-ducks
 [bettercodehub-image]: https://bettercodehub.com/edge/badge/my-brilliant-boilerplate/generator-my-ducks?branch=master
 [bettercodehub-url]: https://bettercodehub.com/
 [codeclimate-maintainability-image]: https://api.codeclimate.com/v1/badges/2eda01a3309277ed0161/maintainability
 [codeclimate-maintainability-url]: https://codeclimate.com/github/my-brilliant-boilerplate/generator-my-ducks/maintainability
+[codeclimate-coverage-image]: https://api.codeclimate.com/v1/badges/2eda01a3309277ed0161/test_coverage
+[codeclimate-coverage-url]: https://codeclimate.com/github/my-brilliant-boilerplate/generator-my-ducks/test_coverage
