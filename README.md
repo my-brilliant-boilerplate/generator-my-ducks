@@ -19,30 +19,24 @@ Then generate your new project:
 yo my-ducks
 ```
 
-#### API
+### Sub generators
 ##### Reducer
 ![screenshot](docs/images/screenshot-reducer.png)
 ```bash
 yo my-ducks:reducer brokers
 yo my-ducks:reducer brokers --srcPath app
+yo my-ducks:reducer brokers --srcPath app --withReduxAction 0
 ```
 
 Arguments:
-- reducer name
-  - decription: reducer name
-  - type: string
+- `name` (String) reducer name
 
 Options:
-- srcPath
-  - decription: Name of application directory.
-  - type: string
-  - value
-    - from cli
-    - from config(.yo-rc.json)
-    - default value(scr)
-
-
-
+- `srcPath` (String, default: _src_) Name of application directory, priority
+  - from cli
+  - from config file(.yo-rc.json)
+  - default value(scr)
+- `withReduxAction` (Boolean, default: true, alias: ra) Use [redux-actions](https://github.com/reduxactions/redux-actions) module in reducer
 
 ## Getting To Know Yeoman
 
