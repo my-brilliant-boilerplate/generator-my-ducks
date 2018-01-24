@@ -22,20 +22,10 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    let srcPath = this.config.get('srcPath');
-    if (!srcPath) {
-      srcPath = this.options.srcPath;
-      this.config.set('srcPath', srcPath);
-    }
-
-    const reducerName = this.options.single
-      ? this.arguments[0]
-      : pluralize(this.arguments[0]);
-    const basePath = `${srcPath}/modules/${reducerName}`;
+    const basePath = `${this._getSrcPath()}/modules/${this._getReducerName()}`;
     const tplPrefix = this.options.single ? 'single' : 'list';
 
     const tpl = this._getTpl();
-
     const files = this._getFileList();
     files.map(file =>
       this.fs.copyTpl(
@@ -44,6 +34,24 @@ module.exports = class extends Generator {
         tpl
       )
     );
+  }
+
+  _getSrcPath() {
+    let srcPath = this.config.get('srcPath');
+    if (!srcPath) {
+      srcPath = this.options.srcPath;
+      this.config.set('srcPath', srcPath);
+    }
+
+    return srcPath;
+  }
+
+  _getReducerName() {
+    const reducerName = this.options.single
+      ? this.arguments[0]
+      : pluralize(this.arguments[0]);
+
+    return reducerName;
   }
 
   _getTpl() {
