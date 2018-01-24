@@ -2,7 +2,7 @@
 
 > Yeoman generator for My Ducks
 
-![screenshot](docs/images/screenshot.png)
+![screenshot](docs/images/main-generator.png)
 
 ## Installation
 
@@ -21,11 +21,13 @@ yo my-ducks
 
 ### Sub generators
 ##### Reducer
-![screenshot](docs/images/screenshot-reducer.png)
+![screenshot](docs/images/reducer-generator.png)
+
+![screenshot](docs/images/reducer-generator-1.png)
 ```bash
-yo my-ducks:reducer brokers
-yo my-ducks:reducer brokers --srcPath app
-yo my-ducks:reducer brokers --srcPath app --withReduxAction 0
+yo my-ducks:reducer broker
+yo my-ducks:reducer broker --srcPath app
+yo my-ducks:reducer auth --single
 ```
 
 Arguments:
@@ -36,7 +38,7 @@ Options:
   - from cli
   - from config file(.yo-rc.json)
   - default value(scr)
-- `withReduxAction` (Boolean, default: true, alias: ra) Use [redux-actions](https://github.com/reduxactions/redux-actions) module in reducer
+- `single` (Boolean, default: false) Reducer for single element
 
 ## Getting To Know Yeoman
 
