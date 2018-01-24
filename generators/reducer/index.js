@@ -1,6 +1,7 @@
 'use strict';
 const Generator = require('yeoman-generator');
 const pluralize = require('pluralize');
+const changeCase = require('change-case');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -60,8 +61,9 @@ module.exports = class extends Generator {
       name: reducerName,
       upperName: reducerName.toUpperCase(),
       lowerName: reducerName.toLowerCase(),
-      capitalazeName:
-        reducerName.charAt(0).toUpperCase() + reducerName.toLowerCase().slice(1)
+      capitalazeName: changeCase.pascalCase(reducerName),
+      pluralizeLower: pluralize(reducerName).toLowerCase(),
+      pluralizeCapitalaze: changeCase.pascalCase(pluralize(reducerName))
     };
 
     return tpl;

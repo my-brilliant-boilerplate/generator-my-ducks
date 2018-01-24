@@ -3,18 +3,18 @@ import * as actions from './actions.js';
 import * as selectors from './selectors.js';
 
 const id = '<%= lowerName %>-test-id';
-describe('modules:<%= lowerName  %>', () => {
+describe('modules:<%= pluralizeLower %>', () => {
   it('should create new <%= lowerName %>', () => {
     const <%= lowerName %> = {
       id,
     };
 
-    const count = selectors.getAll<%= capitalazeName %>s(store.getState()).length;
+    const count = selectors.getAll<%= pluralizeCapitalaze %>(store.getState()).length;
     const expectedCount = count + 1;
 
     store.dispatch(actions.create<%= capitalazeName %>(<%= lowerName %>));
 
-    const actualStore = selectors.getAll<%= capitalazeName %>s(store.getState());
+    const actualStore = selectors.getAll<%= pluralizeCapitalaze %>(store.getState());
 
     expect(actualStore).toHaveLength(expectedCount);
   });
@@ -39,12 +39,12 @@ describe('modules:<%= lowerName  %>', () => {
       id,
     };
 
-    const count = selectors.getAll<%= capitalazeName %>s(store.getState()).length;
+    const count = selectors.getAll<%= pluralizeCapitalaze %>(store.getState()).length;
     const expectedCount = count - 1;
 
     store.dispatch(actions.delete<%= capitalazeName %>(<%= lowerName %>));
 
-    const actualStore = selectors.getAll<%= capitalazeName %>s(store.getState());
+    const actualStore = selectors.getAll<%= pluralizeCapitalaze %>(store.getState());
 
     expect(actualStore).toHaveLength(expectedCount);
   });

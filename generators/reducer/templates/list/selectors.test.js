@@ -1,9 +1,9 @@
 import store from '../../store';
 import * as selectors from './selectors.js';
 
-describe('modules:<%= lowerName %>:selectors', () => {
-  it('should return all <%= lowerName %>s', () => {
-    const <%= lowerName %>s = selectors.getAll<%= capitalazeName %>s(store.getState());
+describe('modules:<%= pluralizeLower %>:selectors', () => {
+  it('should return all <%= pluralizeLower %>', () => {
+    const <%= lowerName %>s = selectors.getAll<%= pluralizeCapitalaze%>(store.getState());
 
     expect(<%= lowerName %>s).toHaveLength(1);
   });
