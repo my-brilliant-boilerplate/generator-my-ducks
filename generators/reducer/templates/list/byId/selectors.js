@@ -1,5 +1,6 @@
 import values from 'lodash/values';
 
-export const getAllGroups = (state) => values(state);
+export const getAll<%= pluralizeCapitalaze %> = (state) => values(state);
 
-export const getGroupById = (state, id) => state[id];
+export const get<%= capitalazeName %>ById = (state, id) => state[id];
+

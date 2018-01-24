@@ -5,7 +5,7 @@ import * as constants from './constants';
 const initState = {};
 
 export default handleActions({
-  [constants.constants.<%= upperName %>_ADD]: (state, action) => ({
+  [constants.<%= upperName %>_ADD]: (state, action) => ({
     ...state,
     ...action.data,
   }),
