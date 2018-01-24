@@ -1,5 +1,6 @@
 'use strict';
 const Generator = require('yeoman-generator');
+const pluralize = require('pluralize');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -27,15 +28,18 @@ module.exports = class extends Generator {
       this.config.set('srcPath', srcPath);
     }
 
-    const basePath = `${srcPath}/modules/${this.arguments[0]}`;
-    const prefix = this.options.single ? 'single' : 'list';
+    const reducerName = this.options.single
+      ? this.arguments[0]
+      : pluralize(this.arguments[0]);
+    const basePath = `${srcPath}/modules/${reducerName}`;
+    const tplPrefix = this.options.single ? 'single' : 'list';
 
     const tpl = this._getTpl();
 
     const files = this._getFileList();
     files.map(file =>
       this.fs.copyTpl(
-        this.templatePath(`${prefix}/${file}.js`),
+        this.templatePath(`${tplPrefix}/${file}.js`),
         this.destinationPath(`${basePath}/${file}.js`),
         tpl
       )

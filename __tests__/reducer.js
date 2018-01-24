@@ -1,33 +1,52 @@
 'use strict';
 const assert = require('yeoman-assert');
 const helper = require('./helpers/index.js');
+const utils = require('./helpers/utils.js');
+const changeCase = require('change-case');
 
-let reducer = 'server';
-let expectedFiles = [
+let reducer;
+let srcPath;
+let filenames;
+let expectedFiles;
+const filenamesForListReducer = ['byId/index', 'byId/selectors'];
+const baseFilenames = [
   'actions',
   'index',
   'index.test',
   'constants',
   'selectors',
-  'selectors.test',
-  'byId/index',
-  'byId/selectors'
+  'selectors.test'
 ];
-let srcPath = 'src';
-const basePath = `${srcPath}/modules/${reducer}`;
-const files = expectedFiles.map(file => {
-  return `${basePath}/${file}.js`;
-});
 
 describe('generator-my-ducks:reducer', () => {
+  beforeEach(() => {
+    reducer = 'server';
+    srcPath = 'src';
+    filenames = [...baseFilenames, ...filenamesForListReducer];
+    expectedFiles = filenames.map(filename =>
+      utils.getFilePath({
+        srcPath,
+        reducerName: reducer,
+        filename
+      })
+    );
+  });
+
   describe('with config', () => {
     it('creates files', done => {
       helper.reducer({
         options: { srcPath },
         args: [reducer],
         done: () => {
-          assert.file(files);
-          assert.fileContent(`${basePath}/actions.js`, 'updateServer');
+          assert.file(expectedFiles);
+          assert.fileContent(
+            utils.getFilePath({
+              srcPath,
+              reducerName: reducer,
+              filename: 'actions'
+            }),
+            `update${changeCase.pascalCase(reducer)}`
+          );
 
           done();
         }
@@ -35,13 +54,30 @@ describe('generator-my-ducks:reducer', () => {
     });
 
     it('creates reducer for single element', done => {
-      const expected = files.slice(0, -2);
+      reducer = 'auth';
+      const single = true;
+      let expectedFiles = baseFilenames.map(filename =>
+        utils.getFilePath({
+          srcPath,
+          reducerName: reducer,
+          single: true,
+          filename
+        })
+      );
       helper.reducer({
-        options: { srcPath, single: true },
+        options: { srcPath, single },
         args: [reducer],
         done: () => {
-          assert.file(expected);
-          assert.fileContent(`${basePath}/actions.js`, 'addServer');
+          assert.file(expectedFiles);
+          assert.fileContent(
+            utils.getFilePath({
+              srcPath,
+              reducerName: reducer,
+              single,
+              filename: 'actions'
+            }),
+            `add${changeCase.pascalCase(reducer)}`
+          );
 
           done();
         }
@@ -52,14 +88,21 @@ describe('generator-my-ducks:reducer', () => {
   describe('without config', () => {
     it('with srcPath in option', done => {
       srcPath = 'app';
-      expectedFiles = [`${srcPath}/modules/${reducer}/actions.js`, '.yo-rc.json'];
+      expectedFiles = baseFilenames.map(filename =>
+        utils.getFilePath({
+          srcPath,
+          reducerName: reducer,
+          filename
+        })
+      );
+      expectedFiles.push('.yo-rc.json');
 
       helper.reducer({
         options: { srcPath },
         args: [reducer],
         done: () => {
           assert.file(expectedFiles);
-          assert.fileContent(expectedFiles[1], srcPath);
+          assert.fileContent(expectedFiles[expectedFiles.length - 1], srcPath);
 
           done();
         }
@@ -67,13 +110,20 @@ describe('generator-my-ducks:reducer', () => {
     });
 
     it('with default srcPath in option', done => {
-      expectedFiles = [`src/modules/${reducer}/actions.js`, '.yo-rc.json'];
+      expectedFiles = baseFilenames.map(filename =>
+        utils.getFilePath({
+          srcPath,
+          reducerName: reducer,
+          filename
+        })
+      );
+      expectedFiles.push('.yo-rc.json');
 
       helper.reducer({
         args: [reducer],
         done: () => {
           assert.file(expectedFiles);
-          assert.fileContent(expectedFiles[1], 'src');
+          assert.fileContent(expectedFiles[expectedFiles.length - 1], srcPath);
 
           done();
         }

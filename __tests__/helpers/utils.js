@@ -1,3 +1,5 @@
+const pluralize = require('pluralize');
+
 const getFileForReducer = (srcPath, reducers, reducerFiles) => {
   return reducers.map(reducer => {
     return reducerFiles.map(file => {
@@ -6,6 +8,13 @@ const getFileForReducer = (srcPath, reducers, reducerFiles) => {
   });
 };
 
+const getFilePath = ({ srcPath, reducerName, single = false, filename }) => {
+  const reducer = single ? reducerName : pluralize(reducerName);
+  const basePath = `${srcPath}/modules/${reducer}`;
+  return `${basePath}/${filename}.js`;
+};
+
 module.exports = {
-  getFileForReducer
+  getFileForReducer,
+  getFilePath
 };
