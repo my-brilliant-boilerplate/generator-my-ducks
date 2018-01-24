@@ -23,7 +23,7 @@ yo my-ducks
 ##### Reducer
 ![screenshot](docs/images/reducer-generator.png)
 
-![screenshot](docs/images/reducer-generator-1.png)
+![screenshot](docs/images/reducer-generator-2.png)
 ```bash
 yo my-ducks:reducer broker
 yo my-ducks:reducer broker --srcPath app
