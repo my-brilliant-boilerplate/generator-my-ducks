@@ -2,14 +2,16 @@
 const assert = require('yeoman-assert');
 const helper = require('./helpers/index.js');
 
-const reducer = 'servers';
+let reducer = 'server';
 let expectedFiles = [
   'actions',
   'index',
   'index.test',
   'constants',
   'selectors',
-  'selectors.test'
+  'selectors.test',
+  'byId/index',
+  'byId/selectors'
 ];
 let srcPath = 'src';
 const basePath = `${srcPath}/modules/${reducer}`;
@@ -25,20 +27,21 @@ describe('generator-my-ducks:reducer', () => {
         args: [reducer],
         done: () => {
           assert.file(files);
-          assert.fileContent(`${basePath}/index.js`, 'handleActions');
+          assert.fileContent(`${basePath}/actions.js`, 'updateServer');
 
           done();
         }
       });
     });
 
-    it('creates reducer without redux-actions module', done => {
+    it('creates reducer for single element', done => {
+      const expected = files.slice(0, -2);
       helper.reducer({
-        options: { srcPath, withReduxAction: false },
+        options: { srcPath, single: true },
         args: [reducer],
         done: () => {
-          assert.file(files);
-          assert.noFileContent(`${basePath}/index.js`, 'handleActions');
+          assert.file(expected);
+          assert.fileContent(`${basePath}/actions.js`, 'addServer');
 
           done();
         }
@@ -49,7 +52,7 @@ describe('generator-my-ducks:reducer', () => {
   describe('without config', () => {
     it('with srcPath in option', done => {
       srcPath = 'app';
-      expectedFiles = [`${srcPath}/modules/servers/actions.js`, '.yo-rc.json'];
+      expectedFiles = [`${srcPath}/modules/${reducer}/actions.js`, '.yo-rc.json'];
 
       helper.reducer({
         options: { srcPath },
@@ -64,7 +67,7 @@ describe('generator-my-ducks:reducer', () => {
     });
 
     it('with default srcPath in option', done => {
-      expectedFiles = [`src/modules/servers/actions.js`, '.yo-rc.json'];
+      expectedFiles = [`src/modules/${reducer}/actions.js`, '.yo-rc.json'];
 
       helper.reducer({
         args: [reducer],
